@@ -1,0 +1,15 @@
+{
+  "name": "satellogicMobileDemo",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "dependencies": {
+    "react": "15.3.2",
+    "react-native": "0.34.0",
+    "react-native-easy-grid": "^0.1.6",
+    "react-native-photo-view": "github:alwx/react-native-photo-view",
+    "react-native-wheel-picker": "^1.1.0"
+  }
+}
