@@ -45,3 +45,7 @@ android/keystores/debug.keystore
 #
 *.pxm
 assets/
+
+*.keystore
+gradle.properties
+*.apk
