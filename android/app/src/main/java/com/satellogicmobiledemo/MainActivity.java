@@ -29,11 +29,18 @@ public class MainActivity extends ReactActivity implements ViewList, WheelList {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
+        int width = this.getWindow().getDecorView().getWidth();
+        int eventX = (int) ev.getX();
+
         for (EventCallback photoView: photoViewsList) {
             photoView.getEvent(ev);
         }
-        for (EventCallback wheelView: wheelViewList) {
-            wheelView.getEvent(ev);
+
+        if (wheelViewList.size() > 0) {
+            if (eventX < width / 2) {
+                wheelViewList.get(0).getEvent(ev);
+            }
+            else wheelViewList.get(1).getEvent(ev);
         }
 
         return false;

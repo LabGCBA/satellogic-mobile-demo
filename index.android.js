@@ -13,97 +13,6 @@ const height = Dimensions
   .get('window')
   .height; //full height
 const mapHeight = 394;
-const imageFolders = [
-  '2013110LGN01',
-  '2014001LGN00',
-  '2014289LGN00',
-  '2015180LGN00',
-  '2016071LGN00',
-  '2013126LGN01',
-  '2014017LGN00',
-  '2014305LGN00',
-  '2015196LGN00',
-  '2016087LGN00',
-  '2013142LGN01',
-  '2014033LGN00',
-  '2014321LGN00',
-  '2015212LGN00',
-  '2016103LGN00',
-  '2013158LGN00',
-  '2014049LGN00',
-  '2014337LGN00',
-  '2015228LGN00',
-  '2016119LGN00',
-  '2013174LGN00',
-  '2014065LGN00',
-  '2014353LGN00',
-  '2015244LGN00',
-  '2016135LGN00',
-  '2013190LGN00',
-  '2014081LGN00',
-  '2015004LGN00',
-  '2015260LGN00',
-  '2016151LGN00',
-  '2013206LGN00',
-  '2014113LGN00',
-  '2015020LGN00',
-  '2015276LGN00',
-  '2016167LGN00',
-  '2013222LGN00',
-  '2014129LGN00',
-  '2015036LGN00',
-  '2015292LGN00',
-  '2016183LGN00',
-  '2013238LGN00',
-  '2014145LGN00',
-  '2015052LGN00',
-  '2015308LGN00',
-  '2016199LGN00',
-  '2013254LGN00',
-  '2014161LGN00',
-  '2015068LGN00',
-  '2015324LGN00',
-  '2016215LGN00',
-  '2013270LGN00',
-  '2014177LGN00',
-  '2015084LGN00',
-  '2015340LGN00',
-  '2016231LGN00',
-  '2013286LGN00',
-  '2014193LGN00',
-  '2015100LGN00',
-  '2015356LGN00',
-  '2016247LGN00',
-  '2013302LGN00',
-  '2014209LGN00',
-  '2015116LGN00',
-  '2016007LGN00',
-  '2013318LGN00',
-  '2014225LGN00',
-  '2015132LGN00',
-  '2016023LGN00',
-  '2013334LGN00',
-  '2014241LGN00',
-  '2015148LGN00',
-  '2015148LGN00',
-  '2013350LGN00',
-  '2014273LGN00',
-  '2015164LGN00',
-  '2016055LGN00'
-];
-const pickedImageFolders = ['2013110LGN01', '2014225LGN00', '2015148LGN00', '2016055LGN00'];
-const imageFiles = [
-  '432.jpg',
-  '654.jpg',
-  '543.jpg',
-  '753.jpg',
-  '562.jpg',
-  '754.jpg',
-  '564.jpg',
-  '764.jpg',
-  '652.jpg',
-  '765.jpg'
-];
 const years = ['2013', '2014', '2015', '2016'];
 const imageCodes = [
   '432',
@@ -118,13 +27,128 @@ const imageCodes = [
   '765'
 ];
 
+const base = require('./assets/base_dark.png');
+const base2 = require('./assets/base_light.png');
+
+const _2013_432 = require('./assets/2013110LGN01/432.jpg');
+const _2013_654 = require('./assets/2013110LGN01/654.jpg');
+const _2013_543 = require('./assets/2013110LGN01/543.jpg');
+const _2013_753 = require('./assets/2013110LGN01/753.jpg');
+const _2013_562 = require('./assets/2013110LGN01/562.jpg');
+const _2013_754 = require('./assets/2013110LGN01/754.jpg');
+const _2013_564 = require('./assets/2013110LGN01/564.jpg');
+const _2013_764 = require('./assets/2013110LGN01/764.jpg');
+const _2013_652 = require('./assets/2013110LGN01/652.jpg');
+const _2013_765 = require('./assets/2013110LGN01/765.jpg');
+
+const _2014_432 = require('./assets/2014225LGN00/432.jpg');
+const _2014_654 = require('./assets/2014225LGN00/654.jpg');
+const _2014_543 = require('./assets/2014225LGN00/543.jpg');
+const _2014_753 = require('./assets/2014225LGN00/753.jpg');
+const _2014_562 = require('./assets/2014225LGN00/562.jpg');
+const _2014_754 = require('./assets/2014225LGN00/754.jpg');
+const _2014_564 = require('./assets/2014225LGN00/564.jpg');
+const _2014_764 = require('./assets/2014225LGN00/764.jpg');
+const _2014_652 = require('./assets/2014225LGN00/652.jpg');
+const _2014_765 = require('./assets/2014225LGN00/765.jpg');
+
+const _2015_432 = require('./assets/2015148LGN00/432.jpg');
+const _2015_654 = require('./assets/2015148LGN00/654.jpg');
+const _2015_543 = require('./assets/2015148LGN00/543.jpg');
+const _2015_753 = require('./assets/2015148LGN00/753.jpg');
+const _2015_562 = require('./assets/2015148LGN00/562.jpg');
+const _2015_754 = require('./assets/2015148LGN00/754.jpg');
+const _2015_564 = require('./assets/2015148LGN00/564.jpg');
+const _2015_764 = require('./assets/2015148LGN00/764.jpg');
+const _2015_652 = require('./assets/2015148LGN00/652.jpg');
+const _2015_765 = require('./assets/2015148LGN00/765.jpg');
+
+const _2016_432 = require('./assets/2016055LGN00/432.jpg');
+const _2016_654 = require('./assets/2016055LGN00/654.jpg');
+const _2016_543 = require('./assets/2016055LGN00/543.jpg');
+const _2016_753 = require('./assets/2016055LGN00/753.jpg');
+const _2016_562 = require('./assets/2016055LGN00/562.jpg');
+const _2016_754 = require('./assets/2016055LGN00/754.jpg');
+const _2016_564 = require('./assets/2016055LGN00/564.jpg');
+const _2016_764 = require('./assets/2016055LGN00/764.jpg');
+const _2016_652 = require('./assets/2016055LGN00/652.jpg');
+const _2016_765 = require('./assets/2016055LGN00/765.jpg');
+
+const images = [
+  [
+    _2013_432,
+    _2013_654,
+    _2013_543,
+    _2013_753,
+    _2013_562,
+    _2013_754,
+    _2013_564,
+    _2013_764,
+    _2013_652,
+    _2013_765
+  ],
+  [
+    _2014_432,
+    _2014_654,
+    _2014_543,
+    _2014_753,
+    _2014_562,
+    _2014_754,
+    _2014_564,
+    _2014_764,
+    _2014_652,
+    _2014_765
+  ],
+  [
+    _2015_432,
+    _2015_654,
+    _2015_543,
+    _2015_753,
+    _2015_562,
+    _2015_754,
+    _2015_564,
+    _2015_764,
+    _2015_652,
+    _2015_765
+  ],
+  [
+    _2016_432,
+    _2016_654,
+    _2016_543,
+    _2016_753,
+    _2016_562,
+    _2016_754,
+    _2016_564,
+    _2016_764,
+    _2016_652,
+    _2016_765
+  ]
+];
+
 class satellogicMobileDemo extends Component {
   constructor() {
     super();
 
+    this.image = _2016_652;
+    this.currentImage = 2;
+    this.currentYear = 1;
+
     this.state = {
-      itemList: years
+      image: _2016_652,
+      base: base
     };
+  }
+
+  onYearSelect(index) {
+    this.setState({image: images[index][this.currentImage]});
+    this.forceUpdate();
+    this.currentYear = index;
+  }
+
+  onCodeSelect(index) {
+    this.setState({image: images[this.currentYear][index]});
+    this.forceUpdate();
+    this.currentImage = index;
   }
 
   render() {
@@ -132,16 +156,17 @@ class satellogicMobileDemo extends Component {
       <View style={styles.container}>
         <View style={styles.mapcontainer} pointerEvents="box-only">
           <PhotoView
-            source={require('./assets/2016247LGN00/754.jpg')}
+            ref='base'
+            source={this.state.image}
             minimumZoomScale={1}
-            maximumZoomScale={2}
+            maximumZoomScale={4}
             androidScaleType="fitStart"
             style={styles.base}/>
           <PhotoView
-            source={require('./assets/base_dark.png')}
-            pointerEvents='box-none'
+            ref='overlay'
+            source={this.state.base}
             minimumZoomScale={1}
-            maximumZoomScale={2}
+            maximumZoomScale={4}
             androidScaleType="fitStart"
             style={styles.overlay}/>
         </View>
@@ -149,12 +174,12 @@ class satellogicMobileDemo extends Component {
           <Col>
             <Picker
               style={styles.wheelview}
-              selectedValue={2}
+              selectedValue={1}
+              onValueChange={(index) => this.onYearSelect(index)}
               itemStyle={{
               color: "#cccccc",
               fontSize: 26
-            }}
-              onValueChange={(index) => console.log(index)}>
+            }}>
               {years.map((value, i) => (<PickerItem label={value} value={i} key={"year" + value}/>))}
             </Picker>
           </Col>
@@ -162,11 +187,11 @@ class satellogicMobileDemo extends Component {
             <Picker
               style={styles.wheelview}
               selectedValue={2}
+              onValueChange={(index) => this.onCodeSelect(index)}
               itemStyle={{
               color: "#aaaaaa",
               fontSize: 26
-            }}
-              onValueChange={(index) => console.log(index)}>
+            }}>
               {imageCodes.map((value, i) => (<PickerItem label={value} value={i} key={"code" + value}/>))}
             </Picker>
           </Col>
