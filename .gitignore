@@ -46,6 +46,6 @@ android/keystores/debug.keystore
 *.pxm
 assets/
 
+android/gradle.properties
 *.keystore
-gradle.properties
 *.apk

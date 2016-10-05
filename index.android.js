@@ -1,5 +1,5 @@
 import React, {Component, UIManager} from 'react';
-import {AppRegistry, StyleSheet, View, Dimensions} from 'react-native';
+import {AppRegistry, StyleSheet, View, Dimensions, NativeModules} from 'react-native';
 import {Col, Row, Grid} from "react-native-easy-grid";
 import PhotoView from 'react-native-photo-view';
 import Picker from 'react-native-wheel-picker';
@@ -26,9 +26,20 @@ const imageCodes = [
   '652',
   '765'
 ];
+const bands = [
+  'Color natural',
+  'Análisis de vegetación',
+  'Color infrarrojo (vegetación)',
+  'Natural con remoción atmosférica',
+  'Vegetación saludable',
+  'Infrarrojo de onda corta',
+  'Tierra/agua',
+  'Falso color (urbano)',
+  'Agricultura',
+  'Penetración atmosférica'
+]
 
 const base = require('./assets/base_dark.png');
-const base2 = require('./assets/base_light.png');
 
 const _2013_432 = require('./assets/2013110LGN01/432.jpg');
 const _2013_654 = require('./assets/2013110LGN01/654.jpg');
@@ -135,19 +146,19 @@ class satellogicMobileDemo extends Component {
 
     this.state = {
       image: _2016_652,
-      base: base
+      base: base,
+      minZoom: 1,
+      maxZoom: 4
     };
   }
 
   onYearSelect(index) {
     this.setState({image: images[index][this.currentImage]});
-    this.forceUpdate();
     this.currentYear = index;
   }
 
   onCodeSelect(index) {
     this.setState({image: images[this.currentYear][index]});
-    this.forceUpdate();
     this.currentImage = index;
   }
 
@@ -156,24 +167,24 @@ class satellogicMobileDemo extends Component {
       <View style={styles.container}>
         <View style={styles.mapcontainer} pointerEvents="box-only">
           <PhotoView
-            ref='base'
             source={this.state.image}
-            minimumZoomScale={1}
-            maximumZoomScale={4}
-            androidScaleType="fitStart"
+            minimumZoomScale={this.state.minZoom}
+            maximumZoomScale={this.state.maxZoom}
+            fadeDuration={0}
+            shouldNotifyLoadEvents={false}
             style={styles.base}/>
           <PhotoView
-            ref='overlay'
             source={this.state.base}
-            minimumZoomScale={1}
-            maximumZoomScale={4}
-            androidScaleType="fitStart"
+            minimumZoomScale={this.state.minZoom}
+            maximumZoomScale={this.state.maxZoom}
+            fadeDuration={0}
+            shouldNotifyLoadEvents={false}
             style={styles.overlay}/>
         </View>
         <Grid>
-          <Col>
+          <Col style={{ width: 90 }}>
             <Picker
-              style={styles.wheelview}
+              style={styles.years}
               selectedValue={1}
               onValueChange={(index) => this.onYearSelect(index)}
               itemStyle={{
@@ -185,14 +196,14 @@ class satellogicMobileDemo extends Component {
           </Col>
           <Col>
             <Picker
-              style={styles.wheelview}
+              style={styles.codes}
               selectedValue={2}
               onValueChange={(index) => this.onCodeSelect(index)}
               itemStyle={{
               color: "#aaaaaa",
-              fontSize: 26
+              fontSize: 16
             }}>
-              {imageCodes.map((value, i) => (<PickerItem label={value} value={i} key={"code" + value}/>))}
+              {bands.map((value, i) => (<PickerItem label={value} value={i} key={"code" + value}/>))}
             </Picker>
           </Col>
         </Grid>
@@ -208,21 +219,29 @@ const styles = StyleSheet.create({
   },
   base: {
     width: width,
-    height: mapHeight
+    height: mapHeight,
+    position: 'absolute',
+    top: 0,
+    left: 0
   },
   overlay: {
     width: width,
     height: mapHeight,
     position: 'absolute',
     top: 0,
-    opacity: 0.80
+    left: 0,
+    opacity: 0.8
   },
   container: {
     height: height,
     backgroundColor: '#141414'
   },
-  wheelview: {
-    width: width / 2,
+  years: {
+    width: width / 4,
+    height: 200
+  },
+  codes: {
+    width: (width / 4) * 3,
     height: 200
   }
 });
